@@ -1,4 +1,6 @@
-%% first phase: construct scalp surface from MRI
+
+%% First phase: construct scalp surface from MRI
+
 %% - importing the DICOM images
 
 % dicomfile = '../raw/ses-001/007-gre_headcast_largeFOV_T1w_WaterExcite/PILOT_HAGGORT.MR.KRIARM_SKYRA.0007.0001.2019.04.11.09.36.04.649721.547271769.IMA';
@@ -205,11 +207,14 @@ ft_write_headshape('vertex_cylinder.stl', vertex_cylinder, 'format', 'stl');
 
 % we can plot all geometrical objects together in MATLAB and in principle you could also adjust the position of the vertex cylinder and the binoculars in MATLAB. Since the alignment of these with the CTF coordinate system is not crucial, you can also shift them around in external 3D editing software (see the next step).
 
+%% Third phase: align the scalp with the dewar and combine/crop the model, this is implemented in MeshMixer
 
-% Third phase: align the scalp with the dewar, this can be done in MeshMixer
 % - load the geometrical model of the aligned head surface
 % - load the geometrical model of the LPA, RPA and NAS head localizer coils
-% the head surface and the localizer coils should not be moved any more, since that invalidates the coregistration with the anatomical MRI and thereby with the source models that you will construct from it, e.g., using FreeSurfer.
+
+% The head surface and the localizer coils should not be moved any more, since that 
+% invalidates the coregistration with the anatomical MRI and thereby with the source 
+% models that you will construct from it, e.g., using FreeSurfer.
 
 % - load the geometrical model of the "binoculars"
 % - if needed move the binoculars to match the subjects eye position and gaze direction
@@ -221,6 +226,7 @@ ft_write_headshape('vertex_cylinder.stl', vertex_cylinder, 'format', 'stl');
 % - crop the aggregate head model to remove everything that is outside the dewar
 % - crop the aggregate head model to remove the neck and lower head
 
-% the fourth phase is implemented in MeshMixer and consists of
+%% Fourth phase: optimize the STL model for 3D printing, this is implemented in MeshMixer
+
 % - make the aggregate head model hollow
 % - export the aggregate head model to an STL file to get it printed
