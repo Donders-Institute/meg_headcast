@@ -205,7 +205,17 @@ ft_write_headshape('combined_axes.stl', combined_axes, 'format', 'stl');
 load vertex_cylinder
 ft_write_headshape('vertex_cylinder.stl', vertex_cylinder, 'format', 'stl');
 
-% we can plot all geometrical objects together in MATLAB and in principle you could also adjust the position of the vertex cylinder and the binoculars in MATLAB. Since the alignment of these with the CTF coordinate system is not crucial, you can also shift them around in external 3D editing software (see the next step).
+%% we can plot all geometrical objects together in MATLAB and in principle you could also adjust the position of the vertex cylinder and the binoculars in MATLAB. Since the alignment of these with the CTF coordinate system is not crucial, you can also shift them around in external 3D editing software (see the next step).
+
+figure
+ft_plot_mesh(scalp_coreg3)
+ft_plot_mesh(headcoil_nas_coreg3, 'edgecolor', 'none', 'facecolor', 'r')
+ft_plot_mesh(headcoil_lpa_coreg3, 'edgecolor', 'none', 'facecolor', 'g')
+ft_plot_mesh(headcoil_rpa_coreg3, 'edgecolor', 'none', 'facecolor', 'g')
+ft_plot_mesh(combined_axes, 'edgecolor', 'none', 'facecolor', 'm')
+ft_plot_mesh(vertex_cylinder, 'edgecolor', 'none', 'facecolor', 'y')
+ft_plot_mesh(binoculars, 'edgecolor', 'none', 'facecolor', 'y')
+camlight
 
 %% Third phase: align the scalp with the dewar and combine/crop the model, this is implemented in MeshMixer
 

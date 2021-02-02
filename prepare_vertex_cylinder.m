@@ -9,7 +9,7 @@ vertex_cylinder.unit = 'mm';
 vertex_cylinder.coordsys = 'ctf';
 
 vertex_cylinder.pos = ft_warp_apply(scale([20 20 75]),   vertex_cylinder.pos);
-vertex_cylinder.pos = ft_warp_apply(translate([0 0 75]), vertex_cylinder.pos);
+vertex_cylinder.pos = ft_warp_apply(translate([0 0 120]), vertex_cylinder.pos);
 
 figure
 ft_plot_mesh(vertex_cylinder, 'edgecolor', 'none', 'facecolor', [0.5 0.5 0.5]);
