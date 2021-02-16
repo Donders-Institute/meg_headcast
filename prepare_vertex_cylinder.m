@@ -4,12 +4,13 @@
 %%
 
 % start with a cylinder along the z-axis
-[vertex_cylinder.pos, vertex_cylinder.tri] = mesh_cylinder(20, 2);
+[vertex_cylinder.pos, vertex_cylinder.tri] = mesh_cylinder(80, 4);
 vertex_cylinder.unit = 'mm';
 vertex_cylinder.coordsys = 'ctf';
 
-vertex_cylinder.pos = ft_warp_apply(scale([20 20 75]),   vertex_cylinder.pos);
-vertex_cylinder.pos = ft_warp_apply(translate([0 0 120]), vertex_cylinder.pos);
+vertex_cylinder.pos = ft_warp_apply(scale([20 20 50]),   vertex_cylinder.pos);
+vertex_cylinder.pos = ft_warp_apply(translate([0 0 150]), vertex_cylinder.pos);
+vertex_cylinder.pos = ft_warp_apply(rotate([0 10 0]), vertex_cylinder.pos);
 
 figure
 ft_plot_mesh(vertex_cylinder, 'edgecolor', 'none', 'facecolor', [0.5 0.5 0.5]);
