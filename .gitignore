@@ -1,0 +1,11 @@
+*.asv
+*.bak
+*.m~
+
+# these are the individual subject models
+seg*.mat
+mri*.mat
+scalp*.mat
+
+# these are from coregistration
+*coreg*.mat
