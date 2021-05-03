@@ -10,14 +10,13 @@
 
 %% - importing the DICOM images
 
-% dicomfile = '../sub-jm/ses-001/007-gre_headcast_largeFOV_T1w_WaterExcite/PILOT_HAGGORT.MR.KRIARM_SKYRA.0007.0001.2019.04.11.09.36.04.649721.547271769.IMA';
-% dicomfile = '../sub-jm/ses-001/008-gre_headcast_largeFOV_T1w_WaterExcite/PILOT_HAGGORT.MR.KRIARM_SKYRA.0008.0001.2019.04.11.09.36.04.649721.547273926.IMA';
-% dicomfile = '../sub-jm/ses-001/009-gre_headcast_largeFOV_T1w_DistortCorrect_ND/PILOT_HAGGORT.MR.KRIARM_SKYRA.0009.0001.2019.04.11.09.36.04.649721.547288155.IMA';
-% dicomfile = '../sub-jm/ses-001/010-gre_headcast_largeFOV_T1w_DistortCorrect/PILOT_HAGGORT.MR.KRIARM_SKYRA.0010.0001.2019.04.11.09.36.04.649721.547291918.IMA';
-dicomfile = '../sub-bb/gre_headcast_largeFOV_T1w_DistortCorrect.nii';
-% dicomfile = '../sub-bb/gre_headcast_largeFOV_T1w_DistortCorrect_ND.nii'
-% dicomfile = '../sub-bb/t1_mprage_sag_ipat2_1p0iso.nii'
-
+% dicomfile = 'sub-jm/ses-001/007-gre_headcast_largeFOV_T1w_WaterExcite/PILOT_HAGGORT.MR.KRIARM_SKYRA.0007.0001.2019.04.11.09.36.04.649721.547271769.IMA';
+% dicomfile = 'sub-jm/ses-001/008-gre_headcast_largeFOV_T1w_WaterExcite/PILOT_HAGGORT.MR.KRIARM_SKYRA.0008.0001.2019.04.11.09.36.04.649721.547273926.IMA';
+% dicomfile = 'sub-jm/ses-001/009-gre_headcast_largeFOV_T1w_DistortCorrect_ND/PILOT_HAGGORT.MR.KRIARM_SKYRA.0009.0001.2019.04.11.09.36.04.649721.547288155.IMA';
+% dicomfile = 'sub-jm/ses-001/010-gre_headcast_largeFOV_T1w_DistortCorrect/PILOT_HAGGORT.MR.KRIARM_SKYRA.0010.0001.2019.04.11.09.36.04.649721.547291918.IMA';
+dicomfile = 'sub-bb/gre_headcast_largeFOV_T1w_DistortCorrect.nii';
+% dicomfile = 'sub-bb/gre_headcast_largeFOV_T1w_DistortCorrect_ND.nii'
+% dicomfile = 'sub-bb/t1_mprage_sag_ipat2_1p0iso.nii'
 
 mri_orig = ft_read_mri(dicomfile);
 
@@ -63,7 +62,7 @@ seg_coreg1 = ft_volumesegment(cfg, mri_coreg1);
 before = sum(seg_coreg1.scalp(:)) * abs(det(seg_coreg1.transform(1:3,1:3)));
 seg_coreg1.scalp = imclose(seg_coreg1.scalp, strel('sphere',6));
 after = sum(seg_coreg1.scalp(:)) * abs(det(seg_coreg1.transform(1:3,1:3)));
-fprintf('added %d ml around the ears\n', round((after-before)/1000)); 
+fprintf('added %d ml around the ears\n', round((after-before)/1000));
 
 cfg = [];
 cfg.funparameter = 'scalp';
@@ -273,11 +272,11 @@ camlight
 
 %% Third phase: this is implemented in MeshMixer
 
-% The head surface and the localizer coils should not be moved any more, since that 
-% invalidates the coregistration with the anatomical MRI and thereby with the source 
+% The head surface and the localizer coils should not be moved any more, since that
+% invalidates the coregistration with the anatomical MRI and thereby with the source
 % models that you will construct from it, e.g., using FreeSurfer.
 
-% - align the dewar, earflaps, and earcanals with the scalp 
+% - align the dewar, earflaps, and earcanals with the scalp
 % - if needed move the binoculars to match the subjects eye position and gaze direction
 % - if needed move the vertex cylinder
 % - combine/crop the model, this is implemented in MeshMixer
