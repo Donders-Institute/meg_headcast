@@ -1,0 +1,29 @@
+// Virtual channel configuration
+
+DigitalChannel
+{
+	Name:	pp1
+	Ref:	UPPT001
+	mask:	0
+	pattern:	0
+	Offset:	0
+}
+
+DigitalChannel
+{
+	Name:	pp2
+	Ref:	UPPT002
+	mask:	0
+	pattern:	0
+	Offset:	0
+}
+
+DigitalChannel
+{
+	Name:	gp
+	Ref:	UDIO001
+	mask:	0
+	pattern:	0
+	Offset:	0
+}
+

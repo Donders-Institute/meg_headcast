@@ -1,0 +1,62 @@
+PATH OF DATASET:
+/ctfmeg/ACQ_Data/20220211/01_Headlocalization_20220211_01.ds
+
+
+NUMBER OF MARKERS:
+3
+
+
+CLASSGROUPID:
+3
+NAME:
+pp1
+COMMENT:
+Trigger Marker corresponding to pp1 (CondBitPattern=0x0, CondBitMask=0x0, Flag0to1Only=1,MinStableLength=0,TransientSearchMask=0x0)
+COLOR:
+red
+EDITABLE:
+No
+CLASSID:
+1
+NUMBER OF SAMPLES:
+0
+LIST OF SAMPLES:
+TRIAL NUMBER		TIME FROM SYNC POINT (in seconds)
+
+
+CLASSGROUPID:
+3
+NAME:
+pp2
+COMMENT:
+Trigger Marker corresponding to pp2 (CondBitPattern=0x0, CondBitMask=0x0, Flag0to1Only=1,MinStableLength=0,TransientSearchMask=0x0)
+COLOR:
+red
+EDITABLE:
+No
+CLASSID:
+2
+NUMBER OF SAMPLES:
+0
+LIST OF SAMPLES:
+TRIAL NUMBER		TIME FROM SYNC POINT (in seconds)
+
+
+CLASSGROUPID:
+3
+NAME:
+gp
+COMMENT:
+Trigger Marker corresponding to gp (CondBitPattern=0x0, CondBitMask=0x0, Flag0to1Only=1,MinStableLength=0,TransientSearchMask=0x0)
+COLOR:
+red
+EDITABLE:
+No
+CLASSID:
+3
+NUMBER OF SAMPLES:
+0
+LIST OF SAMPLES:
+TRIAL NUMBER		TIME FROM SYNC POINT (in seconds)
+
+

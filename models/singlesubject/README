@@ -1,0 +1,36 @@
+This directory contains for pil-002 the anatomical image that
+was used to create a few headshape_*.stl files. From one of those
+headshapes, the pil-002_*.stl files were derived. The latter files
+reflect the location of the head localizer coils on the printed
+headsurface, as well as the placement of the headsurface in the dewar
+helmet. In combination with the *.ds dataset, which was obtained with the
+headcast in place, it should be possible to obtain a mapping between the
+sensors and the dewar helmet surface. 
+
+The *.ds dataset is a mvDs result of the original 01_Headlocalization_20220211_01.ds
+dataset, that is in the catch all collection. The identity of pil-002 is
+Jan-Mathijs Schoffelen. 
+
+CONTEXT:
+
+Based on interactions with the CTF-engineers, it's likely that the
+inaccuracy of the alignment between sensors and dewar helmet is not to be
+neglected. In other words, alignment of headcast with the MEG based on
+geometrical information might not be sufficiently accurate. Geometry based
+alignment is assumed to be possible in the context of headcasts that do not 
+explicitly include spare room for the head localization coils. The first
+generation headcasts created in London (e.g. pil-002) include the coils.
+The headcasts created with the DCCN protocol do not include the coils.
+This makes the latter amenable to coregistration inaccuracies introduced
+by the researcher (e.g. in the Polhemus procedure, or by coregistering
+the anatomical image). On the other hand, placing the coils on the
+subject directly, rather than in the cast, gives a more accurate account
+of the residual movement during the MEG measurement.
+
+The engineers at CTF claim the head localizer coil base coregistration
+might be more accurate than the geometrical details they have provided
+about the sensors-in-dewar configuration. The idea would be that pil-002 
+is to be used as a 'benchmark' subject to do a head localizer based
+coregistration. As long as the system geometry is stable i.e. in between
+maintenance sessions during the which the sensors are taken out, it is
+probably the best estimate that can be made.
