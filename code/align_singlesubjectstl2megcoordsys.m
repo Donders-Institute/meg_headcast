@@ -2,7 +2,8 @@
 % below 'datadir' to the MEG dewar coordinate system. This results in a
 % helmet mesh that is coregistered to the sensors, using the head
 % localization coils (rather than geometric information provided by the CTF
-% engineers). 
+% engineers). The coregistered sensor-array and helmet shape are saved as
+% mat-files. The coordinate system is 'dewar' and the units are in 'mm'.
 
 datadir  = '/home/dyncon/jansch/projects/meg_headcast/models/singlesubject';
 subjname = 'pil-002';  
