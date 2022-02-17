@@ -31,7 +31,7 @@ transform_headshape2dewar = transform_ctf2dewar * transform_headshape2ctf;
 head_and_helmet = ft_read_headshape('pil-002_placement.stl');
 head_and_helmet.coordsys = 'ras';
 cd(fullfile(ftpath,'private'));
-[head_and_helmet.pos, head_and_helmet.tri, keeppos] = remove_double_vertices(head_and_helmet.pos, head_and_helmet.tri);
+[head_and_helmet.pos, head_and_helmet.tri] = remove_double_vertices(head_and_helmet.pos, head_and_helmet.tri);
 cd(pw_dir);
 
 split = splitmesh(head_and_helmet);

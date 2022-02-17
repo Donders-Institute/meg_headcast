@@ -15,10 +15,13 @@ if ~isfield(surface, 'coordsys')
   surface = ft_determine_coordsys(surface);
 end
 if ~isequal(surface.coordsys, 'als')
+  M0      = transform_generic(surface.coordsys, 'als');
   surface = ft_convert_coordsys(surface, 'als');
+else
+  M0      = eye(4);
 end
 
-% shift it to the origin
+% shift the surface to the origin
 mpos = mean(surface.pos);
 surface.pos = surface.pos - mpos;
 T = eye(4); T(1:3, 4) = -mpos;
@@ -31,6 +34,10 @@ minpos = min(surface.pos, [], 1);
 
 pwddir = pwd;
 [ftver, ftdir] = ft_version;
+
+cd(fullfile(ftdir,'private'));
+[surface.pos, surface.tri] = remove_double_vertices(surface.pos, surface.tri);
+
 cd(fullfile(ftdir, 'plotting/private'));
 
 % for the nose:
@@ -52,5 +59,6 @@ rpa = mean(pos(sel,:));
 M       = ft_headcoordinates(nas, lpa, rpa, 'ctf'); % T has already been applied
 surface = ft_transform_geometry(M, surface);
 
-transform_surfacestl2ctfish = M*T;
+% create the final transformation matrix, including the 2ALS alignment and the shift of the origin.
+transform_surfacestl2ctfish = M*T*M0;
 cd(pwddir);

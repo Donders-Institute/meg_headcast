@@ -1,4 +1,4 @@
-function [x1,x2,Tfinal] = align_surface2surface(surface1, surface2)
+function [surface1, surface2] = align_surface2surface(surface1, surface2)
 
 % ALIGN_SURFACE2SURFACE aligns two surface models of a head, which represents the
 % which represents the to-be-printed surface in the first input argument, 
@@ -61,12 +61,11 @@ M00 = R*M00; % keep track of the rotation as well
 curr_dir   = pwd;
 cd(fullfile(ftpath,'private'));
 
-[x1.pos, x1.tri, x1keep] = remove_double_vertices(x1.pos, x1.tri);
-[x2.pos, x2.tri, x2keep] = remove_double_vertices(x2.pos, x2.tri);
+[x1.pos, x1.tri] = remove_double_vertices(x1.pos, x1.tri);
+[x2.pos, x2.tri] = remove_double_vertices(x2.pos, x2.tri);
 
 % compute the normals, needed for a good icp
 x1.nrm = normals(x1.pos,x1.tri);
-cd(curr_dir);
 
 % make a local copy of the positions
 pos1 = x1.pos;
@@ -104,3 +103,10 @@ pos2_c             = ft_warp_apply(M2, pos2_c);
 T      = M3*M2*M1*M0; % transformation matrix that excludes the already applied steps
 x2     = ft_transform_geometry(T, x2);
 Tfinal = M4*T*M00; % final transformation matrix that maps the second mesh onto the first.
+
+surface2 = ft_transform_geometry(Tfinal, surface2);
+[surface1.pos, surface1.tri] = remove_double_vertices(surface1.pos, surface1.tri);
+[surface2.pos, surface2.tri] = remove_double_vertices(surface2.pos, surface2.tri);
+surface2.coordsys = surface1.coordsys;
+
+cd(curr_dir);
