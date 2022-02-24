@@ -16,36 +16,56 @@ mold.coordsys = 'als';
 maxpos = max(mold.pos, [], 1);
 minpos = min(mold.pos, [], 1);
 
-pwdir = pwd;
-[ftver, ftdir] = ft_version;
-
-cd(fullfile(ftdir, 'private'));
-[mold.pos, mold.tri] = remove_double_vertices(mold.pos, mold.tri);
-
-cd(fullfile(ftdir, 'plotting/private'));
 % for the nose:
 [X, Y, Z, pos1, tri1, pos, tri] = intersect_plane(mold.pos, mold.tri, [270 0 0], [270 0 1], [270 1 0]);
 [X, Y, Z, pos1, tri1, pos, tri] = intersect_plane(pos, tri, [0 0 120], [1 0 120], [0 1 120]);
 posorig = pos;
-pos     = pos - mean(pos); % this actually not needed
-% by construction, the 'circle' lies in the yz-plane between [-10 10], and [-36 -44]
+meanpos = mean(posorig);
+pos     = pos - meanpos; % this actually not needed
+
+% the tilted circle lies in the yz-plane between [-10 10], and [-36 -44]
 sel = pos(:,2)>-10 & pos(:,2)<10 & pos(:,3)<-36 & pos(:,3)>-44;
-nas = mean(posorig(sel,:)); % it might be better to do a circfit here
+pnt = pos(sel,:);
+origin = mean(pnt);
+pnt = pnt - origin;
+
+% check whether the origin of the circle is indeed in the 'meanpnt', or can
+% be improved a bit
+[u, s, v]   = svd(pnt, 'econ');
+[Oy, Oz, R] = circfit(pnt*v(:,1),pnt*v(:,2));
+nas         = [0 Oy Oz];
+nas         = nas + origin + meanpos
 
 % for the lpa:
 [X, Y, Z, pos, tri, pos1, tri1] = intersect_plane(mold.pos, mold.tri, [0 245 0], [0 245 1], [1 245 0]);
 [X, Y, Z, pos, tri, pos1, tri1] = intersect_plane(pos, tri, [0 0 60], [0 1 60], [1 0 60]);
 sel = pos(:,1)>130 & pos(:,1)<140 & pos(:,3)<50 & pos(:,3)>40;
-lpa = mean(pos(sel,:)); % it might be better to do a circfit here
+pnt = pos(sel,:);
+origin = mean(pnt);
+pnt = pnt - origin;
+
+% check whether the origin of the circle is indeed in the 'meanpnt', or can
+% be improved a bit
+[u, s, v]   = svd(pnt, 'econ');
+[Ox, Oz, R] = circfit(pnt*v(:,1),pnt*v(:,2));
+lpa         = [Ox 0 Oz];
+lpa         = lpa + origin;
 
 % for the rpa:
 [X, Y, Z, pos1, tri1, pos, tri] = intersect_plane(mold.pos, mold.tri, [0 50 0], [0 50 1], [1 50 0]);
 [X, Y, Z, pos, tri, pos1, tri1] = intersect_plane(pos, tri, [0 0 60], [0 1 60], [1 0 60]);
 sel = pos(:,1)>130 & pos(:,1)<140 & pos(:,3)<50 & pos(:,3)>40;
-rpa = mean(pos(sel,:)); % it might be bettter to do a circfit here
+pnt = pos(sel,:);
+origin = mean(pnt);
+pnt = pnt - origin;
+
+% check whether the origin of the circle is indeed in the 'meanpnt', or can
+% be improved a bit
+[u, s, v]   = svd(pnt, 'econ');
+[Ox, Oz, R] = circfit(pnt*v(:,1),pnt*v(:,2));
+rpa         = [Ox 0 Oz];
+rpa         = rpa + origin;
 
 transform_moldstl2ctfish = ft_headcoordinates(nas, lpa, rpa, 'ctf');
 mold = ft_transform_geometry(transform_moldstl2ctfish, mold);
-
-cd(pwdir);
 

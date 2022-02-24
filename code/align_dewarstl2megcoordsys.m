@@ -1,14 +1,16 @@
-% this script intends to align the helmet description as in the dewar.stl
+function [dew, sens] = align_dewarstl2megcoordsys
+
+% this function intends to align the helmet description as in the dewar.stl
 % file to the device coordinate system of the MEG. The helmet is upside
 % down in the stl-file, and needs to be rotated by 45 degrees. Also, a
 % shift in the z-direction needs to be applied, of 107.31 mm, as per the
 % information obtained from the CTF-engineers.
 
 datadir = '/home/dyncon/jansch/projects/meg_headcast/models/singlesubject'; % change if needed
-hdr = ft_read_header(fullfile(datadir, 'pil-002_20220211_01.ds'), 'coordsys', 'dewar');
+sens    = ft_read_sens(fullfile(datadir, 'pil-002_20220211_01.ds'), 'coordsys', 'dewar', 'senstype', 'meg');
 
 datadir = '/home/dyncon/jansch/projects/meg_headcast/models/orig'; % change if needed
-dew = ft_read_headshape(fullfile(datadir, 'dewar.stl'));
+dew     = ft_read_headshape(fullfile(datadir, 'dewar.stl'));
 
 shift   = mean(dew.pos); shift(3) = min(dew.pos(:,3)); % upside down, shift top of helmet to 0
 dew.pos = dew.pos - shift;
@@ -28,5 +30,6 @@ dew = ft_convert_units(dew, 'cm');
 figure; hold on;
 ft_plot_mesh(dew);
 ft_plot_axes(dew);
-ft_plot_sens(hdr.grad);
+ft_plot_sens(sens);
+h=light; lighting gouraud
 
