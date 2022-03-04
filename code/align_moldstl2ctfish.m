@@ -34,7 +34,7 @@ pnt = pnt - origin;
 [u, s, v]   = svd(pnt, 'econ');
 [Oy, Oz, R] = circfit(pnt*v(:,1),pnt*v(:,2));
 nas         = [0 Oy Oz];
-nas         = nas + origin + meanpos
+nas         = nas + origin + meanpos;
 
 % for the lpa:
 [X, Y, Z, pos, tri, pos1, tri1] = intersect_plane(mold.pos, mold.tri, [0 245 0], [0 245 1], [1 245 0]);
