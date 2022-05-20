@@ -1,16 +1,21 @@
-function [dew, sens] = align_singlesubjectstl2megcoordsys
+function [helmet, sens] = align_singlesubjectstl2megcoordsys
 
-% this function intends to align the single subject data, as stored in the
-% below 'datadir' to the MEG dewar coordinate system. This results in a
+% ALIGN_SINGLESUBJECTSTL2MEGCOORDSYS aligns the single subject data, as stored 
+% in the below 'datadir' to the MEG dewar coordinate system. This results in a
 % helmet mesh that is coregistered to the sensors, using the head
 % localization coils (rather than geometric information provided by the CTF
 % engineers). The coregistered sensor-array and helmet shape are saved as
 % mat-files. The coordinate system is 'dewar' and the units are in 'mm'.
+% The coregistration is based on a measurement, where the subject wore a
+% head cast with fixed coils.
+% 
+% Use as 
+%   [helmet, sens] = align_singlesubjectstl2megcoordsys
 
 datadir  = '/home/dyncon/jansch/projects/meg_headcast/models/singlesubject';
 subjname = 'pil-002';  
   
-if 1
+if 0
   % the code below has once been ran, and the output has been saved to
   % disk, skip
 
@@ -59,7 +64,3 @@ ft_plot_mesh(helmet);
 ft_plot_axes(helmet);
 ft_plot_sens(sens);
 h=light; lighting gouraud
-
-dew = helmet;
-
-

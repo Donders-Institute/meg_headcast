@@ -1,6 +1,11 @@
 function [surface, transform_surfacestl2ctfish] = align_surfacestl2ctfish(surface)
 
-% ALIGN_SURFACE2CTFISH 
+% ALIGN_SURFACESTL2CTFISH aligns the to-be-printed surface model of the head
+% that is decorated with earflaps, visor and screwholes to a CTF'ish coordinate
+% system, which is defined by the screwholes. The innersurface of the mold
+% (i.e. the surface that describes the outside of the head cast) has
+% similar screwholes, which can be used to register those 2 objects, using
+% the fiducial location information from both objects
 
 if nargin<1
   datadir = '/project/3015999.02/jansch_sandbox/bobbra/stl';
@@ -32,13 +37,7 @@ T = eye(4); T(1:3, 4) = -mpos;
 maxpos = max(surface.pos, [], 1);
 minpos = min(surface.pos, [], 1);
 
-pwddir = pwd;
-[ftver, ftdir] = ft_version;
-
-cd(fullfile(ftdir,'private'));
 [surface.pos, surface.tri] = remove_double_vertices(surface.pos, surface.tri);
-
-cd(fullfile(ftdir, 'plotting/private'));
 
 % for the nose:
 [X, Y, Z, pos1, tri1, pos, tri] = intersect_plane(surface.pos, surface.tri, [118 0 0], [118 0 1], [118 1 0]);
@@ -58,7 +57,8 @@ rpa = mean(pos(sel,:));
 
 M       = ft_headcoordinates(nas, lpa, rpa, 'ctf'); % T has already been applied
 surface = ft_transform_geometry(M, surface);
+surface.fid.pos   = ft_warp_apply(M, [nas;lpa;rpa]);
+surface.fid.label = {'nas';'lpa';'rpa'};
 
 % create the final transformation matrix, including the 2ALS alignment and the shift of the origin.
 transform_surfacestl2ctfish = M*T*M0;
-cd(pwddir);

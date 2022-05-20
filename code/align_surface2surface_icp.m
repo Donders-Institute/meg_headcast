@@ -1,18 +1,25 @@
-function [surface1, surface2] = align_surface2surface(surface1, surface2)
+function [surface1, surface2, Tfinal] = align_surface2surface_icp(surface1, surface2)
 
-% ALIGN_SURFACE2SURFACE aligns two surface models of a head, which represents the
+% ALIGN_SURFACE2SURFACE_ICP aligns two surface models of a head, 
 % which represents the to-be-printed surface in the first input argument, 
 % and the original surface from the anatomy in the second input argument.
+% The alignment is based on the ICP algorithm. Note that the order of the
+% input arguments matters, due to some hard-coded assumptions about how
+% both objects relate to each other. 
 %
 % Use as
-%   [s1, s2, T] = align_surface2surface(surface1, surface2)
+%   [s1, s2, T] = align_surface2surface_icp(surface1, surface2)
 %
 % where surface2 = a mesh obtained from an anatomical MRI
 % where surface1 = a decorated (and possibly resampled) version of surface2,
 % with extensions attached that serve as placeholders for the to be created
 % headcast. It is assumed that surface2 is to be (among others) rotated by 
 % about 15 degrees in the xz-plane in order to pre-align with surface1,
-% before ICP is used for a refined coregistration.
+% before ICP is used for a refined coregistration. Surface1 and surface2
+% are assumed to represent the same object.
+%
+% The output surfaces s1 and s2 are aligned (to s1), and the transformation
+% matrix T maps the input surface2 to surface1.
 
 % this is needed for the ICP function that is used below
 ft_hastoolbox('fileexchange',1);
@@ -58,8 +65,6 @@ M00 = R*M00; % keep track of the rotation as well
 
 % the vertex positions are not guaranteed to be unique, leading to degenerate normals later on, fix this
 [v,ftpath] = ft_version;
-curr_dir   = pwd;
-cd(fullfile(ftpath,'private'));
 
 [x1.pos, x1.tri] = remove_double_vertices(x1.pos, x1.tri);
 [x2.pos, x2.tri] = remove_double_vertices(x2.pos, x2.tri);
@@ -105,8 +110,13 @@ x2     = ft_transform_geometry(T, x2);
 Tfinal = M4*T*M00; % final transformation matrix that maps the second mesh onto the first.
 
 surface2 = ft_transform_geometry(Tfinal, surface2);
-[surface1.pos, surface1.tri] = remove_double_vertices(surface1.pos, surface1.tri);
-[surface2.pos, surface2.tri] = remove_double_vertices(surface2.pos, surface2.tri);
+surface2.distancein      = zeros(size(surface2.pos,1),1);
+surface2.distancein(info(2).p_idx) = info(1).distancein;
+surface2.distanceout     = zeros(size(surface2.pos,1),1);
+surface2.distanceout(info(2).p_idx) = info(2).distanceout;
+ 
+[surface1.pos, surface1.tri, keeppos1] = remove_double_vertices(surface1.pos, surface1.tri);
+[surface2.pos, surface2.tri, keeppos2] = remove_double_vertices(surface2.pos, surface2.tri);
 surface2.coordsys = surface1.coordsys;
-
-cd(curr_dir);
+surface2.distancein  = surface2.distancein(keeppos2);
+surface2.distanceout = surface2.distanceout(keeppos2);

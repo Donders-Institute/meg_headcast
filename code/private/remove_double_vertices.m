@@ -1,4 +1,4 @@
-function [pos, tri] = remove_double_vertices(pos, tri)
+function [pos, tri, keeppos] = remove_double_vertices(pos, tri)
 
 % REMOVE_DOUBLE_VERTICES removes double vertices from a triangular mesh,
 % renumbering the vertex-indices for the triangles.

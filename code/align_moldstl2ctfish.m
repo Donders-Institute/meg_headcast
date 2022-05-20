@@ -4,7 +4,8 @@ function [mold, transform_moldstl2ctfish] = align_moldstl2ctfish
 % an ALS coordinate system that is defined by the screw holes that are
 % used to fixate the printed head surface. This CTFISH coordinate system
 % can also be unequivocally identified in the printed head surface, which
-% allows for the coregistration between SURFACE and MOLD.
+% allows for the coregistration between SURFACE and MOLD. For this latter
+% coregistration step one should use the <SOMETHINGSOMETHING> function
 
 datadir = '/home/dyncon/jansch/projects/meg_headcast/models/orig';
 mold    = ft_read_headshape(fullfile(datadir, 'dewar_mold.stl'));
@@ -68,4 +69,6 @@ rpa         = rpa + origin;
 
 transform_moldstl2ctfish = ft_headcoordinates(nas, lpa, rpa, 'ctf');
 mold = ft_transform_geometry(transform_moldstl2ctfish, mold);
-
+mold.fid.pos   = ft_warp_apply(transform_moldstl2ctfish, [nas;lpa;rpa]);
+mold.fid.label = {'nas';'lpa';'rpa'};
+        
