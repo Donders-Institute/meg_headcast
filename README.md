@@ -25,8 +25,8 @@ Precisely fitting headcasts can ensure that a subject is positioned in the MEG s
 
 People with (varying levels of) experience at the DCCN:
 
-- Tom Marshall
-- Kristijan Armeni
+- Tom Marshall (currently at Oxford)
+- Kristijan Armeni (currently at Johns Hopkins)
 - Jan-Mathijs Schoffelen
 - Bob Bramson
 
@@ -180,9 +180,11 @@ See also https://www.youtube.com/watch?v=tVozndvAgyw+
 
 For researchers within the DCCN, please consult the DCCN's SOP, which is linked on the following intranet page: https://intranet.donders.ru.nl/index.php?id=meg-lab-procedures
 
-More generally, for researchers outside the DCCN who happen to end up at this page, Gareth Barnes was so kind to share some relevant documents that are used at the Wellcome Centre for Human Neuroimaging. 
-
-
+More generally, for researchers outside the DCCN who happen to end up at this page, Gareth Barnes was so kind to share some relevant documents that are used at the Wellcome Centre for Human Neuroimaging: 
+- [SOP](/docs/WTCN_MEG_HEADCAST_SOP_march2015.pdf)
+- [emergency procedure](/docs/WTCN_MEG_HEADCAST_Emerg_proc_Appendix2.pdf)
+- [training checklist](/docs/WTCN_MEG_HEADCAST_training_Appendix1.pdf)
+- [volunteer guide](/docs/volunteerguide_v2.pdf)
 
 To be discussed: is extra (formal) training and certification needed? 
 
