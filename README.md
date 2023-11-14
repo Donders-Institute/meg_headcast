@@ -29,6 +29,7 @@ People with (varying levels of) experience at the DCCN:
 - Kristijan Armeni (currently at Johns Hopkins)
 - Jan-Mathijs Schoffelen
 - Bob Bramson
+- Felix Klaassen
 
 Relevant literature and links:
 
