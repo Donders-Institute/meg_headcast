@@ -172,13 +172,22 @@ The inside of the helmet needs to be waxed prior to pouring the foam, to ensure 
 
 ## Safety precautions
 
-As discussed with Gareth: _"Our primary safety measure is therefore to ensure that neither the chair nor the dewar is moved while the subject is wearing a head-cast"_.
+There is some concern with respect to participants' safety when performing MEG experiments with the headcast in place. Since the participants may be highly immobilized, once positioned, it is very important **NOT** to move the chair! 
 
-See also http://megcommunity.org/instrumentation/peripherals/20-peripheralscategory/31-miscellaneous and especially https://www.youtube.com/watch?v=tVozndvAgyw+
+Or to quote Gareth: _"Our primary safety measure is therefore to ensure that neither the chair nor the dewar is moved while the subject is wearing a head-cast"_.
 
-To be discussed: is extra (formal) training and certification needed?
+See also https://www.youtube.com/watch?v=tVozndvAgyw+
 
-## Maintenande of the headcasts and short-term storage
+For researchers within the DCCN, please consult the DCCN's SOP, which is linked on the following intranet page: https://intranet.donders.ru.nl/index.php?id=meg-lab-procedures
+
+More generally, for researchers outside the DCCN who happen to end up at this page, Gareth Barnes was so kind to share some relevant documents that are used at the Wellcome Centre for Human Neuroimaging. 
+
+
+
+To be discussed: is extra (formal) training and certification needed? 
+
+
+## Maintenance of the headcasts and short-term storage
 
 This is to be done by the researcher.
 
