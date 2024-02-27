@@ -39,26 +39,51 @@ minpos = min(surface.pos, [], 1);
 
 [surface.pos, surface.tri] = remove_double_vertices(surface.pos, surface.tri);
 
+r = 2.5;
+n = 30;
+
+
 % for the nose:
 [X, Y, Z, pos1, tri1, pos, tri] = intersect_plane(surface.pos, surface.tri, [118 0 0], [118 0 1], [118 1 0]);
 
-sel = pos(:,2)>-4 & pos(:,2)<4 & pos(:,3)<-62 & pos(:,3)>-70;
-nas = mean(pos(sel,:));
+[posnas, nas, R] = detectcircle(pos, r, n);
+%sel = pos(:,2)>-4 & pos(:,2)<4 & pos(:,3)<-62 & pos(:,3)>-70;
+%nas = mean(pos(sel,:));
+%nas = O;
 
 % for the lpa:
 [X, Y, Z, pos, tri, pos1, tri1] = intersect_plane(surface.pos, surface.tri, [0 92 0], [0 92 1], [1 92 0]);
-sel = pos(:,1)>-17.5 & pos(:,1)<-11 & pos(:,3)<-63 & pos(:,3)>-69;
-lpa = mean(pos(sel,:));
+[poslpa, lpa, R] = detectcircle(pos, r, n);
+
+%sel = pos(:,1)>-17.5 & pos(:,1)<-11 & pos(:,3)<-63 & pos(:,3)>-69;
+%lpa = mean(pos(sel,:));
 
 % for the rpa:
 [X, Y, Z, pos1, tri1, pos, tri] = intersect_plane(surface.pos, surface.tri, [0 -92 0], [0 -92 1], [1 -92 0]);
-sel = pos(:,1)>-17.5 & pos(:,1)<-11 & pos(:,3)<-63 & pos(:,3)>-69;
-rpa = mean(pos(sel,:));
+[posrpa, rpa, R] = detectcircle(pos, r, n);
+
+%sel = pos(:,1)>-17.5 & pos(:,1)<-11 & pos(:,3)<-63 & pos(:,3)>-69;
+%rpa = mean(pos(sel,:));
 
 M       = ft_headcoordinates(nas, lpa, rpa, 'ctf'); % T has already been applied
 surface = ft_transform_geometry(M, surface);
 surface.fid.pos   = ft_warp_apply(M, [nas;lpa;rpa]);
 surface.fid.label = {'nas';'lpa';'rpa'};
+
+pos = ft_warp_apply(M, [posnas;poslpa;posrpa]);
+fid = ft_warp_apply(M, [nas;lpa;rpa]);
+
+figure; hold on; % for evaluation
+ft_plot_mesh(surface, 'edgecolor', 'none', 'facecolor', [0.8 0.8 0.8], 'facealpha', 0.4);
+ft_plot_axes(surface);
+h = light; lighting gouraud; material dull
+
+figure; hold on;
+ft_plot_dipole(fid(1,:)./10,[1 0 0]);
+ft_plot_dipole(fid(2,:)./10,[0 1 0]);
+ft_plot_dipole(fid(3,:)./10,[0 -1 0]);
+plot3(pos(:,1)./10, pos(:,2)./10, pos(:,3)./10, 'marker', 'o', 'linestyle', 'none', 'markeredgecolor', [.8 .8 .8]);
+set(gcf, 'color', 'w');
 
 % create the final transformation matrix, including the 2ALS alignment and the shift of the origin.
 transform_surfacestl2ctfish = M*T*M0;

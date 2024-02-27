@@ -1,14 +1,14 @@
-function [surface1, surface2] = align_surface2surface_fid(surface1, surface2)
+function [surface1, surface2, T] = align_surface2surface_fid(surface1, surface2, flag)
 
 % ALIGN_SURFACE2SURFACE_FID aligns two surface models, not necessarily
 % describing the same object, based on the fiducial location information
 % present. 
 %
 % Use as
-%   [s1, s2, T] = align_surface2surface_icp(surface1, surface2)
+%   [s1, s2, T] = align_surface2surface_icp(surface1, surface2, flag)
 %
 % where surface1 and surface2 contain a subfield fid, that contains
-% matching fiducials
+% matching fiducials.
 %
 % The output surfaces s1 and s2 are aligned (to s1), and the transformation
 % matrix T maps the input surface2 to surface1.
@@ -30,7 +30,8 @@ function [R, t] = getRt(A, B)
 % It expects as input a 3xN matrix of 3D points.
 % It returns R, t, which transforms A into B
 
-% find mean column wise
+% find mean column wise, this should not be needed, because the fiducials
+% are equivalent
 centroid_A = mean(A, 2);
 centroid_B = mean(B, 2);
 

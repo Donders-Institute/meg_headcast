@@ -1,4 +1,4 @@
-function [helmet, innersurface] = align_moldstl2dewar
+function [helmet, innersurface, T] = align_moldstl2dewar
 
 % ALIGN_MOLDSTL2DEWAR aligns the helmet's mold innersurface to the MEG helmet.
 % The MEG helmet is expressed in the dewar's coordinate system, and
@@ -8,7 +8,7 @@ function [helmet, innersurface] = align_moldstl2dewar
 % Use as 
 %   [helmet, innersurface] = align_moldstl2dewar
 
-if 1
+if 0
   ft_hastoolbox('fileexchange', 1);
   load(fullfile('/home/dyncon/jansch/projects/meg_headcast/models/singlesubject', 'helmet_dewar_mm.mat'));
   load(fullfile('/home/dyncon/jansch/projects/meg_headcast/models', 'mold_innersurface.mat'));
@@ -53,11 +53,22 @@ if 1
 
   save(fullfile('/home/dyncon/jansch/projects/meg_headcast/models', 'mold_innersurface_dewar.mat'), 'innersurface');
 
-  % Tfinal = M4*M3*R2*T1;
+  T = M4*M3*R2*T1;
 else
   % just load the data
   load(fullfile('/home/dyncon/jansch/projects/meg_headcast/models/singlesubject', 'helmet_dewar_mm.mat'));
+  load(fullfile('/home/dyncon/jansch/projects/meg_headcast/models', 'mold_innersurface.mat'));
+  i1 = innersurface;
   load(fullfile('/home/dyncon/jansch/projects/meg_headcast/models', 'mold_innersurface_dewar.mat'), 'innersurface');
+  i2 = innersurface;
+
+  I1 = i1.pos;
+  I2 = i2.pos;
+  I1(:,4) = 1;
+  I2(:,4) = 1;
+  
+  T = I2'/I1';
+  
 end
 
 figure; hold on;
