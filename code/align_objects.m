@@ -12,6 +12,8 @@
 % MEG dataset for the subject (to obtain the grad), mrifile1 points to the
 % MRI image used to obtain the stl-file for the headcast, mrifile2 points
 % to the MRI image used that served as an input into the freesurfer scripts
+% FIXME: the below filename handling is hard-coded for now, and should
+% ideally go elsewhere
 switch subjname
   case 'sub-001'
     fname1 = '/project/3023009.06/4JM/files_TG_headcasts/Sub-001/Headcore 3D-print file_Sub001.STL';
