@@ -1,4 +1,4 @@
-function [helmet, innersurface, T] = align_moldstl2dewar
+function [helmet, innersurface, T, hfig] = align_moldstl2dewar
 
 % ALIGN_MOLDSTL2DEWAR aligns the helmet's mold innersurface to the MEG helmet.
 % The MEG helmet is expressed in the dewar's coordinate system, and
@@ -71,8 +71,9 @@ else
   
 end
 
-figure; hold on;
+hfig = figure; hold on;
 ft_plot_mesh(helmet, 'facealpha', 0.5);
 ft_plot_axes(helmet);
 ft_plot_mesh(innersurface, 'vertexcolor', innersurface.distanceout);
 h=light; lighting gouraud
+view([30 20])

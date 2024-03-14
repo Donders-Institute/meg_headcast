@@ -1,4 +1,4 @@
-function [surface, transform_surfacestl2ctfish] = align_surfacestl2ctfish(surface)
+function [surface, transform_surfacestl2ctfish, hfig] = align_surfacestl2ctfish(surface)
 
 % ALIGN_SURFACESTL2CTFISH aligns the to-be-printed surface model of the head
 % that is decorated with earflaps, visor and screwholes to a CTF'ish coordinate
@@ -73,10 +73,11 @@ surface.fid.label = {'nas';'lpa';'rpa'};
 pos = ft_warp_apply(M, [posnas;poslpa;posrpa]);
 fid = ft_warp_apply(M, [nas;lpa;rpa]);
 
-figure; hold on; % for evaluation
+hfig = figure; hold on; % for evaluation
 ft_plot_mesh(surface, 'edgecolor', 'none', 'facecolor', [0.8 0.8 0.8], 'facealpha', 0.4);
 ft_plot_axes(surface);
 h = light; lighting gouraud; material dull
+view([32 14]);
 
 figure; hold on;
 ft_plot_dipole(fid(1,:)./10,[1 0 0]);
@@ -84,6 +85,7 @@ ft_plot_dipole(fid(2,:)./10,[0 1 0]);
 ft_plot_dipole(fid(3,:)./10,[0 -1 0]);
 plot3(pos(:,1)./10, pos(:,2)./10, pos(:,3)./10, 'marker', 'o', 'linestyle', 'none', 'markeredgecolor', [.8 .8 .8]);
 set(gcf, 'color', 'w');
+view([32 14]);
 
 % create the final transformation matrix, including the 2ALS alignment and the shift of the origin.
 transform_surfacestl2ctfish = M*T*M0;
