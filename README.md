@@ -167,9 +167,11 @@ The first model I finished fits on the print bed of a Prusa i3 mk2s printer, see
 
 ## Making and pouring the foam
 
-We have a fiberglass dummy helmet from CTF at our deposition, and a 3D printed version of that helmet. Pouring the foam in a mid-seperable 3D-printed model of the helmet makes it earier to remove the two pieces that together form the outer shell.
+We use a 3D printed (dis)assemblable model of the dewar for pouring the foam. The head surface print can be attached to this mold with screws to keep it fixated during the pouring process. Both the dewar model and the head surface need to be pre treated with wax.
 
-The inside of the helmet needs to be waxed prior to pouring the foam, to ensure that the foam does not stick.
+![](./figures/figure16.png)
+![](./figures/figure17.png)
+![](./figures/figure18.png)
 
 ## Safety precautions
 
