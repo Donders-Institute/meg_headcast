@@ -169,9 +169,9 @@ The first model I finished fits on the print bed of a Prusa i3 mk2s printer, see
 
 We use a 3D printed (dis)assemblable model of the dewar for pouring the foam. The head surface print can be attached to this mold with screws to keep it fixated during the pouring process. Both the dewar model and the head surface need to be pre treated with wax.
 
-![](./figures/figure16.png)
-![](./figures/figure17.png)
-![](./figures/figure18.png)
+![](./figures/figure17.jpg)
+![](./figures/figure18.jpg)
+![](./figures/figure19.jpg)
 
 ## Safety precautions
 
