@@ -157,7 +157,7 @@ The fourth phase is implemented in MeshMixer and consists of
 
 ![](./figures/figure13.png)
 ![](./figures/figure14.png)
-![](./figures/figure15.png)
+![](./figures/figure15.png){width="50%"}
 
 After the 3D model has been written to STL format, it can be sliced and printed. Printing can done with FDM (Fused Deposition Modeling) using a filament, or using SLS with a powder and a laser.
 
