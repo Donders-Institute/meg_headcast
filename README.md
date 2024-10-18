@@ -157,7 +157,7 @@ The fourth phase is implemented in MeshMixer and consists of
 
 ![](./figures/figure13.png)
 ![](./figures/figure14.png)
-![](./figures/figure15.png){width="50%"}
+![](./figures/figure15.png)
 
 After the 3D model has been written to STL format, it can be sliced and printed. Printing can done with FDM (Fused Deposition Modeling) using a filament, or using SLS with a powder and a laser.
 
@@ -169,9 +169,9 @@ The first model I finished fits on the print bed of a Prusa i3 mk2s printer, see
 
 We use a 3D printed (dis)assemblable model of the dewar for pouring the foam. The head surface print can be attached to this mold with screws to keep it fixated during the pouring process. Both the dewar model and the head surface need to be pre treated with wax.
 
-![](./figures/figure17.jpg)
-![](./figures/figure18.jpg)
-![](./figures/figure19.jpg)
+<img src="./figures/figure17.jpg" width="500" height="300">
+<img src="./figures/figure18.jpg" width="500" height="300">
+<img src="./figures/figure19.jpg" width="400" height="400">
 
 ## Safety precautions
 
