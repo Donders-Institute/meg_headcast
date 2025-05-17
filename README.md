@@ -31,7 +31,7 @@ In the most recent procedure for pouring the foam we use a 3D printed mold of th
 
 ## Safety precautions
 
-TWe should take extra care with the participants' safety when performing MEG experiments with the headcast in place. Since the participants may be highly immobilized, once positioned, it is very important **NOT** to move the chair! Or to quote Gareth: _"Our primary safety measure is therefore to ensure that neither the chair nor the dewar is moved while the subject is wearing a head-cast"_.
+We should take extra care with the participants' safety when performing MEG experiments with the headcast in place. Since the participants may be highly immobilized, once positioned, it is very important **NOT** to move the chair! Or to quote Gareth: _"Our primary safety measure is therefore to ensure that neither the chair nor the dewar is moved while the subject is wearing a head-cast"_.
 
 See also <https://www.youtube.com/watch?v=tVozndvAgyw+>
 
