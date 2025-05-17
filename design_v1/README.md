@@ -46,7 +46,7 @@ Hair is not visible on the MRI. The ears in the segmented MRI might be too flat 
 
 ## Creating the 3D model element
 
-The inital MATLAB code from Jan-Mathijs was shared with Bob. I started with the code of Jan-Mathijs, and especially improved on the coregistration and modeling the cut-outs for eyes and ears.
+The initial MATLAB code from Jan-Mathijs was shared with Bob. I started with the code of Jan-Mathijs, and especially improved on the coregistration and modeling the cut-outs for eyes and ears.
 
 The first phase is implemented in MATLAB and consists of
 
