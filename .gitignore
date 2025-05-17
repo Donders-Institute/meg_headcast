@@ -1,6 +1,7 @@
 *.asv
 *.bak
 *.m~
+.DS_Store
 
 # these are the individual subject models
 seg*.mat
