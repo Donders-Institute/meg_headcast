@@ -1,6 +1,10 @@
 
 # Designing a MEG headcast
 
+This procedure is designed to use [MATLAB](https://nl.mathworks.com/products/matlab.html) and [MeshMixer](https://www.research.autodesk.com/projects/meshmixer/), which is a free software package for 3D design. [MeshLab](https://www.meshlab.net) is another free and useful tool for reviewing and editing STL meshes.
+
+## Summary
+
 The procedure for designing the initial 3D model of the scalp surface and aligning it
 with the coordinate system and the head localizer coils is implemented in `do_make_headcast.m`.
 
