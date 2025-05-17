@@ -19,7 +19,7 @@ People with (varying levels of) experience at the DCCN:
 
 This repository contains code, 3D models, and documentation that was compiled over the years at the Donders Centre for Cognitive Neuroimaging (DCCN) at the Donders Institute, Radboud University Nijmegen, NL.
 
-The [design_v1](design_v1) directory represents the procedure as designed by Robert in 2021. It has been superseded by a the [design_v2](design_v2) procedure following the pilots of Bob and Uriel. Please ask Miranda or Jan-Mathijs for up-to-date details.
+The [design_v1](design_v1) directory represents the procedure as designed by Robert in 2021. It has been superseded by the [design_v2](design_v2) procedure following the pilots of Bob and Uriel. Please ask Miranda or Jan-Mathijs for up-to-date details.
 
 ## 3D printing the head and pouring the foam
 
