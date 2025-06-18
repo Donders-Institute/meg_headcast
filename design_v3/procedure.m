@@ -58,11 +58,13 @@ combined.tri = [
   headcore.tri + n1
   moldcore.tri + n1 + n2
   ];
+combined.coordsys = 'als';
 
 figure
-ft_plot_mesh(combined)
+ft_plot_mesh(combined, 'axes', 1)
 alpha 0.5
 ft_headlight
+
 
 %%
 
@@ -76,9 +78,16 @@ cfg = ft_interactiverealign(cfg);
 % try this
 % rotate    = 0 0 -90
 % scale     = 1 1 1 (always)
-% translate = 15 0 90
+% translate = 18 0 90
+
+% followed by "apply" and then this
+% rotate    = 0 10 0
+% scale     = 1 1 1 (always)
+% translate = -12 0 3
+
 
 %%
+% apply the homogenous transformation to the headshape
 
 headshape_aligned = ft_transform_geometry(cfg.m, headshape);
 
@@ -87,3 +96,9 @@ ft_plot_mesh(headshape_aligned, 'facecolor', 'w', 'edgecolor', 'none');
 ft_plot_mesh(headcore, 'facecolor', 'w', 'edgecolor', 'none');
 ft_plot_mesh(moldcore, 'facecolor', 'w', 'edgecolor', 'none');
 ft_headlight
+
+%%
+% write the aligned headshape to an STL file
+
+ft_write_headshape('headshape.stl', headshape_aligned, 'format', 'stl')
+
