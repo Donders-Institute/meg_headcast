@@ -22,6 +22,9 @@ ft_headlight;
 dewar = ft_read_headshape('models/stl/dewar.stl');
 headcore = ft_read_headshape('models/stl/headcore.stl');
 moldcore = ft_read_headshape('models/stl/moldcore.stl');
+neckslab = ft_read_headshape('models/stl/neckslab.stl');
+noseslab = ft_read_headshape('models/stl/noseslab.stl');
+
 
 %%
 
@@ -101,4 +104,5 @@ ft_headlight
 % write the aligned headshape to an STL file
 
 ft_write_headshape('headshape.stl', headshape_aligned, 'format', 'stl')
+
 

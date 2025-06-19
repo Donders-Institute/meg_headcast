@@ -1,5 +1,5 @@
 
-# Designing a MEG headcast
+# Designing a MEG headcast - iteration 1
 
 This procedure is designed to use [MATLAB](https://nl.mathworks.com/products/matlab.html) and [MeshMixer](https://www.research.autodesk.com/projects/meshmixer/), which is a free software package for 3D design. [MeshLab](https://www.meshlab.net) is another free and useful tool for reviewing and editing STL meshes.
 
